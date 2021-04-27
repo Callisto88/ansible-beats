@@ -10,8 +10,8 @@
   become: yes
   copy:
     remote_src: yes
-    src: "{{ beats_modules_dir }}/{{ item.key }}.yml.disabled"
-    dest: "{{ beats_modules_dir }}/{{ item.key }}.yml"
+    src: "{{ beats_modules_dir }}/{{ item.beat.key }}.yml.disabled"
+    dest: "{{ beats_modules_dir }}/{{ item.beat.key }}.yml"
   when: (not item.value.enabled is defined or item.value.enabled) and not item.value.config is defined
   notify: restart the service
 
